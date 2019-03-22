@@ -93,9 +93,9 @@ func (m GelfMessage) getExtraFields() (json.RawMessage, error) {
 		"_created":        m.Container.Created,
 	}
 	for name, label := range m.Container.Config.Labels {
-		if len(name) > 5 && strings.ToLower(name[0:5]) == "gelf_" {
-			extra[name[4:]] = label
-		}
+		//if len(name) > 5 && strings.ToLower(name[0:5]) == "gelf_" {
+			extra[name] = label
+		//}
 	}
 	swarmnode := m.Container.Node
 	if swarmnode != nil {
